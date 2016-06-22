@@ -9,7 +9,7 @@
 # Edited by Jonathan Bowen, Oxford University, August 1993
 
 # Location of gofer files - site specific
-ROOT=/usr/local/gofer
+ROOT=/usr/local
 
 # first, the location of your prelude file:
 GOFER=${GOFER-$ROOT/lib/standard.prelude}
