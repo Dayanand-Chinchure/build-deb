@@ -39,6 +39,8 @@ all		: gofer gofc runtime.o
 
 gofer		: $(IOBJECTS)
 		  $(CC) $(CFLAGS) $(OPTFLAGS) $(IOBJECTS) -o gofer $(LDFLAGS)
+		  mkdir -p ~/temp/gofer/
+		  cp ../pusimple.pre ~/temp/gofer/
 		  strip gofer
 
 gofc		: $(COBJECTS)

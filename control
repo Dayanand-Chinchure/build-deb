@@ -1,0 +1,9 @@
+Package: gofer
+Priority: extra
+Section: checkinstall
+Installed-Size: 1992
+Maintainer: root@daya
+Architecture: i386
+Version: 1.0-1
+Provides: gofer
+Description: Demo Package

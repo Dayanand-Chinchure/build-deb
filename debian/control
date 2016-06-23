@@ -1,6 +1,6 @@
 Source: gofer
 Maintainer: Dayanand Chinchure <dchinchure@gmail.com>
-
+Version: 1.0
 Package: gofer
 Architecture: any
-
+Description: Hello World!

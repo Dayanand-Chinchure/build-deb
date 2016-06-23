@@ -1,0 +1,4 @@
+#! set -x
+myhome=$(logname)
+mkdir -p /home/$myhome/temp/gofer
+cp pusimple.pre /home/myhome/temp/gofer/

@@ -3,7 +3,6 @@ OBJECTS		= storage.o input.o static.o type.o compiler.o \
 		  parser.o pug.o
 IOBJECTS	= gofer.o builtin.o  machine.o output.o $(OBJECTS)
 COBJECTS	= gofc.o cbuiltin.o cmachine.o $(OBJECTS)
-USER_HOME=$(shell echo $(HOME))
 
 # Edit the following settings as required.
 # There are two choices of command line editor that can be used with Gofer:
@@ -36,20 +35,17 @@ OPTFLAGS	= -O
 OPT1		=
 #OPT1		= -O1
 
-USER_HOME=$(shell echo $(HOME))
+myhome=$(shell logname)
 
-all		: Gofer Gofc runtime.o
+all		: gofer gofc runtime.o
 
-Gofer		: $(IOBJECTS)
-		  $(CC) $(CFLAGS) $(OPTFLAGS) $(IOBJECTS) -o Gofer $(LDFLAGS)
-		  mkdir -p $(USER_HOME)/temp/gofer
-		  cp ../pusimple.pre $(USER_HOME)/temp/gofer
-		  strip Gofer
-		  
+gofer		: $(IOBJECTS)
+		  $(CC) $(CFLAGS) $(OPTFLAGS) $(IOBJECTS) -o gofer $(LDFLAGS)
+		  strip gofer
 
-Gofc		: $(COBJECTS)
-		  $(CC) $(CFLAGS) $(OPTFLAGS) $(COBJECTS) -o Gofc $(LDFLAGS)
-		  strip Gofc
+gofc		: $(COBJECTS)
+		  $(CC) $(CFLAGS) $(OPTFLAGS) $(COBJECTS) -o gofc $(LDFLAGS)
+		  strip gofc
 
 .c.o		:
 		  $(CC) -c $(CFLAGS) $(OPTFLAGS) $<
@@ -58,7 +54,12 @@ clean		:
 		  rm *.o $(TESTS)
 
 install		:
-		  cp Gofer ..
+		  cp gofer /usr/local/bin/
+		  cp pusimple.pre /usr/local/bin/
+		  cp pustd.pre /usr/local/bin
+		  cp standard.prelude /usr/local/lib/
+
+
 .gs		:
 		  ./gofc $*.gs
 		  $(CC) $(OPTFLAGS) $*.c runtime.o -o $* $(LDFLAGS)

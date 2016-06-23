@@ -639,7 +639,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile config.h final-wrapper.sh
+all-am: Makefile config.h
 installdirs: installdirs-recursive
 installdirs-am:
 install: install-recursive
